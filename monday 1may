@@ -1,0 +1,22 @@
+// JAVA CODE
+
+    Map<String,Integer> mm = new HashMap<>();
+    String help(Node root){
+        String temp = String.valueOf(root.data);
+        for(Node x:root.children){
+            String t = help(x);
+            temp=temp+t+"*";
+        }
+        mm.putIfAbsent(temp,0);
+        mm.put(temp,mm.get(temp)+1);
+        return temp;
+    }
+    public int duplicateSubtreeNaryTree(Node root){
+       // Code here
+        help(root);
+        int ans=0;
+        for(Map.Entry<String,Integer> x:mm.entrySet()){
+            if(x.getValue()>1)ans++;
+        }
+        return ans;
+    }
