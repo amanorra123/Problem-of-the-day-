@@ -1,0 +1,14 @@
+ public static String stringMirror(String str) {
+        // code here
+        StringBuilder temp = new StringBuilder();
+        temp.append(str.charAt(0));
+        for(int i=1;i<str.length();i++){
+            if(str.charAt(i)<temp.charAt(i-1))temp.append(str.charAt(i));
+            else if(str.charAt(i)==temp.charAt(i-1) && i!=1)temp.append(str.charAt(i));
+            else break;
+        }
+        StringBuilder t = new StringBuilder(temp);
+        t.reverse();
+        temp.append(t);
+        return temp.toString();
+    }
